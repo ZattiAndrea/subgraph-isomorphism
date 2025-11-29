@@ -16,7 +16,8 @@ algorithm."""
 from itertools import chain
 from typing import Union, Tuple
 import numpy as np
-from qiskit import QuantumRegister, QuantumCircuit, opflow
+from qiskit import QuantumRegister, QuantumCircuit
+from qiskit.quantum_info import SparsePauliOp
 from qiskit.circuit import ParameterVector
 from qiskit.circuit.library import Diagonal
 
@@ -112,15 +113,18 @@ def s4_ansatz(
 def params_tensor(shape, *, name="t") -> np.ndarray:
     """Prepare a tensor of circuit parameters."""
     shape = tuple(np.atleast_1d(shape).flatten())
-    v = ParameterVector(name=name, length=np.product(shape))
-    v = np.array(v.params, dtype=np.object)
+    v = ParameterVector(name=name, length=np.prod(shape))
+    v = np.array(v.params, dtype=object)
     return v.reshape(shape)
 
 
-def observable(n: int) -> opflow.OperatorBase:
+def observable(n: int) -> SparsePauliOp:
     """Prepare the observable for the VQE Framework."""
-    obs0 = (opflow.Z + opflow.I) / 2
-    return -obs0.tensorpower(n)
+    obs0 = (SparsePauliOp("Z") + SparsePauliOp("I")) / 2
+    obs_final = obs0
+    for _ in range(n - 1):
+        obs_final = obs_final.tensor(obs0) 
+    return -obs_final
 
 
 def _is_pow_2(v: int):

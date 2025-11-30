@@ -1,6 +1,8 @@
-networkx
+qiskit>=1.0.0
+qiskit-algorithms
 numpy
-qiskit
-tqdm
+networkx
 matplotlib
+tqdm
+pylatexenc
 pygraphviz

@@ -60,7 +60,7 @@ For information on how to contribute to this project, please take a look at [CON
 ### Acknowledgements
 This module is based on the theory and experiment described in [[1]](#references).
 
-The code on which this module is based was written by Nicola Mariella.
+This module is based on code originally written by Nicola Mariella, with a subsequent refactor by Andrea Zatti to support Qiskit 1.x.
 
 We are highly thankful to Dr. Andrea Simonetto, 
 Dr. Claudio Gambella (both were at IBM Research Europe - Dublin), 
@@ -71,7 +71,8 @@ and Prof. Jiri Vala (Maynooth University - Dep. of Theoretical Physics) for thei
 
 <!-- REFERENCES -->
 ### References
-[1] Nicola Mariella, Andrea Simonetto, *A Quantum Algorithm for the Sub-Graph Isomorphism Problem*, https://arxiv.org/abs/2111.09732
+[1] Nicola Mariella, Andrea Simonetto, *A Quantum Algorithm for the Sub-Graph Isomorphism Problem*, ACM Transactions on Quantum Computing, Volume 4, Issue 2.
+[DOI](https://doi.org/10.1145/3569095)
 
 <!-- LICENSE -->
 ### License
